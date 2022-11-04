@@ -7,6 +7,7 @@ import Favorites from './pages/Favorites';
 import Profile from './pages/Profile';
 import profileEdit from './pages/profileEdit';
 import notFound from './pages/notFound';
+import { createUser } from './services/userAPI';
 
 class App extends React.Component {
   constructor() {
@@ -14,8 +15,14 @@ class App extends React.Component {
     this.state = {
       btnController: true,
       userName: '',
+      redirectController: false,
+      loading: false,
     };
   }
+
+  resetRedicValue = () => {
+    this.setState({ redirectController: false });
+  };
 
   validateBtn = ({ target }) => {
     const k = 2;
@@ -25,8 +32,17 @@ class App extends React.Component {
     });
   };
 
+  handleClick = async () => {
+    const { userName } = this.state;
+    this.setState({ loading: true });
+    await createUser({ name: userName });
+    this.setState({ redirectController: true,
+      loading: false,
+    }, this.resetRedicValue);
+  };
+
   render() {
-    const { btnController, userName } = this.state;
+    const { btnController, userName, redirectController, loading } = this.state;
     return (
       <BrowserRouter>
         <p>TrybeTunes</p>
@@ -36,6 +52,9 @@ class App extends React.Component {
               btnController={ btnController }
               validateBtn={ this.validateBtn }
               userName={ userName }
+              redirectController={ redirectController }
+              loading={ loading }
+              handleClick={ this.handleClick }
             />
           </Route>
           <Route path="/search" component={ Search } />
