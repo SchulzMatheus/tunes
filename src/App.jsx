@@ -8,6 +8,7 @@ import Profile from './pages/Profile';
 import profileEdit from './pages/profileEdit';
 import notFound from './pages/notFound';
 import { createUser } from './services/userAPI';
+import aux from './services/aux';
 
 class App extends React.Component {
   constructor() {
@@ -25,10 +26,9 @@ class App extends React.Component {
   };
 
   validateBtn = ({ target }) => {
-    const k = 2;
     this.setState({
       userName: target.value,
-      btnController: target.value.length <= k,
+      btnController: aux(2, target),
     });
   };
 
