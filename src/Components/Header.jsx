@@ -24,8 +24,6 @@ export default class Header extends Component {
       loading ? <Loading />
         : (
           <header data-testid="header-component">
-            Header
-            <span data-testid="header-user-name">{user.name}</span>
             <nav>
               <Link data-testid="link-to-search" to="/search">Search</Link>
               <br />
@@ -34,6 +32,7 @@ export default class Header extends Component {
               <Link data-testid="link-to-profile" to="/profile">Profile</Link>
               <br />
             </nav>
+            <span data-testid="header-user-name">{user.name}</span>
           </header>
         )
     );
