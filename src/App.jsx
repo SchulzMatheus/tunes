@@ -57,11 +57,11 @@ class App extends React.Component {
               handleClick={ this.handleClick }
             />
           </Route>
-          <Route path="/search" component={ Search } />
-          <Route path="/album/:id" component={ Album } />
-          <Route path="/favorites" component={ Favorites } />
+          <Route exact path="/search" component={ Search } />
+          <Route exact path="/album/:id" component={ Album } />
+          <Route exact path="/favorites" component={ Favorites } />
           <Route exact path="/profile" component={ Profile } />
-          <Route path="/profile/edit" component={ profileEdit } />
+          <Route exact path="/profile/edit" component={ profileEdit } />
           <Route path="/" component={ notFound } />
         </Switch>
       </BrowserRouter>
