@@ -8,7 +8,7 @@ import Profile from './pages/Profile';
 import profileEdit from './pages/profileEdit';
 import notFound from './pages/notFound';
 import { createUser } from './services/userAPI';
-import aux from './services/aux';
+import aux from './services/auxBtnValidator';
 
 class App extends React.Component {
   constructor() {
