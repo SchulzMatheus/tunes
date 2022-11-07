@@ -6,7 +6,13 @@ import Loading from '../Components/loading';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 
 export default class Search extends Component {
-  state = { btnController: true };
+  state = { btnController: true,
+    artist: '',
+    loading: '',
+    albums: '',
+    founded: '',
+    auxName: '',
+    controller: '' };
 
   validateBtn = ({ target }) => {
     this.setState({

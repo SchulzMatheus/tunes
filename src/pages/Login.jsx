@@ -1,5 +1,4 @@
 import { Component } from 'react';
-import prop from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import Loading from '../Components/loading';
 
@@ -41,11 +40,4 @@ export default class Login extends Component {
   }
 }
 
-Login.propTypes = {
-  validateBtn: prop.func,
-  userName: prop.string,
-  btnController: prop.bool,
-  loading: prop.string,
-  redirectController: prop.bool,
-  handleClick: prop.func,
-}.isRequired;
+Login.propTypes = {}.isRequired;

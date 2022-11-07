@@ -4,4 +4,6 @@ const getMusics = async (id) => {
   return requestJson.results;
 };
 
+// console.log(getMusics('1432169216'));
+
 export default getMusics;
