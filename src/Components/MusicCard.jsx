@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 import Loading from './loading';
 
 export default class MusicCard extends Component {
@@ -12,11 +12,19 @@ export default class MusicCard extends Component {
   }
 
   isFavorite = async ({ target }, songInfo) => {
-    this.setState({ isChecked: target.value, loading: true });
-    await addSong(songInfo);
-    this.setState({
-      loading: false,
-    });
+    if (target.checked) {
+      this.setState({ isChecked: target.checked, loading: true });
+      await addSong(songInfo);
+      this.setState({
+        loading: false,
+      });
+    } else {
+      this.setState({ isChecked: target.checked, loading: true });
+      await removeSong(songInfo);
+      this.setState({
+        loading: false,
+      });
+    }
   };
 
   render() {
