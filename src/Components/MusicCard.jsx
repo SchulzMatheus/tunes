@@ -1,9 +1,15 @@
 import { Component } from 'react';
-import { addSong } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 import Loading from './loading';
 
 export default class MusicCard extends Component {
   state = { isChecked: false, loading: '' };
+
+  async componentDidMount() {
+    const { trackName } = this.props;
+    const favoriteList = await getFavoriteSongs();
+    this.setState({ isChecked: favoriteList.some((e) => e.trackName === trackName) });
+  }
 
   isFavorite = async ({ target }, songInfo) => {
     this.setState({ isChecked: target.value, loading: true });
@@ -36,7 +42,7 @@ export default class MusicCard extends Component {
             type="checkBox"
             id={ trackId }
             onChange={ (change) => this.isFavorite(change, songData) }
-            value={ isChecked }
+            checked={ isChecked }
           />
         </label>
       </div>
